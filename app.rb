@@ -2,9 +2,10 @@ require 'sinatra/base'
 
 class Airbnb < Sinatra::Base
   enable :sessions
+  set :layout, true
 
   get '/' do
-    p "Hello, World!"
+    erb :index
   end
 
   run! if app_file == $0
