@@ -7,6 +7,43 @@
 - Capybara
   - Selenium
 
+### Setup
+
+clone the repo and run:
+
+`$ bundle install`
+
+In the project root.
+
+### To setup the databases
+First create two PostgresSQL Databases, one for production and one for dev/test:
+
+```
+CREATE DATABASE makers_bnb;
+
+CREATE DATABASE makers_bnb_test;
+```
+
+Then run the migration files in `db/migrations/` into them.
+
+
+### To start the server:
+
+```
+$ rackup
+```
+or specify a port
+
+```
+$ rackup -p <port>
+```
+
+Run tests with:
+
+```
+rspec
+```
+
 ### Headline specification:
 - Any signed-up user can list a new space.
 - Users can list multiple spaces.
@@ -34,8 +71,7 @@ As a user
 So that I know that I have added a space
 I would like to see a list of spaces
 ```
-
- **R2 - Adding and listing spaces + space information**
+**R2 - Adding and listing spaces + space information**
 ```
 R2U1.
 As a user
@@ -57,7 +93,6 @@ As a user
 So that I can offer the customer a good choice
 I want to be able to offer a range of dates for my space.
 ```
-
 **R3 - booking**
 ```
 R3U1.
