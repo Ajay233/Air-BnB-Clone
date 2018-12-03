@@ -54,8 +54,9 @@ rspec
 - Until a user has confirmed a booking request, that space can still be booked for that night.
 
 ### User Stories:
- ```
+
 **R1 - Signup/in**
+ ```
 R1U1.
 As a user
 So that I can use the app
@@ -70,8 +71,9 @@ R1U3.
 As a user
 So that I know that I have added a space
 I would like to see a list of spaces
-
+ ```
  **R2 - Adding and listing spaces + space information**
+  ```
 R2U1.
 As a user
 So that I can keep track of the spaces I've added
@@ -91,14 +93,15 @@ R2U5.
 As a user
 So that I can offer the customer a good choice
 I want to be able to offer a range of dates for my space.
-
+ ```
 **R3 - booking**
+ ```
 R3U1.
 As a user
 So that I go on a trip
 I would like to be able to request any space available on the app for one night
 
-R3U2.
+R3U2. 
 As a user that has listed a space
 So I can control the state of my listed space
 I would like to be approve a booking request
