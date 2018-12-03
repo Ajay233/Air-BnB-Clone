@@ -80,3 +80,9 @@ I would like to still receive request until I have confirmed a booking on a give
 ### Questions:
 - do we have different types of user
 - who confirms what - we are working on the assumption that it is the poster of a space that confirms
+
+### Minimum Viable Product
+- User can sign up
+- User can log in
+- User can add a space
+- User can see listed spaces
