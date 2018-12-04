@@ -6,6 +6,7 @@ require 'capybara/rspec'
 require 'rspec'
 require 'simplecov'
 require 'simplecov-console'
+require 'database_helpers'
 
 Capybara.app = Airbnb
 
