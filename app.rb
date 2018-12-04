@@ -9,5 +9,9 @@ class Airbnb < Sinatra::Base
     erb :index
   end
 
+  get '/users/new' do
+    erb(:"users/new")
+  end
+
   run! if app_file == $0
 end
