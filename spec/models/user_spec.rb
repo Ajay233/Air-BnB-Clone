@@ -31,7 +31,7 @@ describe User do
   end
 
   describe "#authenticate" do
-    it "will return a valid user when the email and password" do
+    it "will return a valid user when the email and password is valid" do
       User.create(user_db_params)
       authenticated_user = User.authenticate(email: user_db_params[:email],
                                              password: user_db_params[:password])
@@ -42,7 +42,7 @@ describe User do
     it "will return nil when the email is invalid" do
       User.create(user_db_params)
       invalid = User.authenticate(email: 'wrong@email.com',
-                                             password: user_db_params[:password])
+                                  password: user_db_params[:password])
       expect(invalid).to be(nil)
     end
 
