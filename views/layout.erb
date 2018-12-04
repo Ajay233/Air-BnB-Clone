@@ -7,10 +7,13 @@
   <body>
     <div class="container">
       <h2>Welcome to MakersBnB</h2>
+      <% if flash[:notice] %>
+        <div class="alert alert-warning" role="alert">
+          <%= flash[:notice] %>
+        </div>
+         <% end %>
       <nav aria-label="breadcrumb">
-         <%# <ol class="breadcrumb"> %>
            <li  class="breadcrumb-item"><a href="/users/new">Sign up</a></li>
-         <%# </ol> %>
        </nav>
       <%= yield %>
     </div>

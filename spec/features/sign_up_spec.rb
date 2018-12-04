@@ -21,4 +21,20 @@ feature 'Sign up' do
 
     expect(page).to have_content "Welcome, testusername"
   end
+
+  scenario 'a will get an error message if username exists' do
+    visit "/"
+    click_link "Sign up"
+    fill_in('username', with: 'Ajay123')
+    fill_in('email', with: 'test@example.com')
+    fill_in('password', with: 'password123')
+    click_button('Submit')
+    # click_link "Sign up"
+    # fill_in('username', with: 'Ajay123')
+    # fill_in('email', with: 'test@example.com')
+    # fill_in('password', with: 'password123')
+    # click_button('Submit')
+
+    expect(page).to have_content "Computer says nooo"
+  end
 end
