@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require './database_connection_setup'
 require 'sinatra/flash'
+require './lib/models/user'
 
 class Airbnb < Sinatra::Base
   enable :sessions
@@ -8,15 +9,7 @@ class Airbnb < Sinatra::Base
   register Sinatra::Flash
 
   get '/' do
-    User = Struct.new("User",:username)
-    p @user = User.new(session[:username])
-    other_user = "Ajay123"
-    if @user.username == other_user
-      flash[:notice] = "Computer says nooo"
-    else
-      flash[:notice] = "Success!!!"
-    end
-    # @user = User.find(session[:user_id]
+    @user = User.find(id: session[:user_id])
     erb :index
   end
 
@@ -25,14 +18,12 @@ class Airbnb < Sinatra::Base
   end
 
   post '/users' do
-    User = Struct.new("User",:username, :email, :password)
-    @user = User.new(
-      params['username'],
-      params['email'],
-      params['password'])
-    session[:username] = params['username'] #
-    array = Array.new
-    p array.push(@user.username)
+    user = User.create(
+      name: params[:name],
+      username: params[:username],
+      email: params[:email],
+      password: params[:password])
+    session[:user_id] = user.id
     redirect '/'
   end
 
