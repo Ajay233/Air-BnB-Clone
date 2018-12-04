@@ -11,20 +11,14 @@ describe User do
 
   describe "initialize" do
     it "has id, name, username, email" do
-      expect(user.id).to eq('1')
-      expect(user.name).to eq('Name1')
-      expect(user.username).to eq('Username')
-      expect(user.email).to eq('email@email.com')
+      check_user(user)
     end
   end
 
   describe "#create" do
     it("can create a new user in the users table") do
       new_user = User.create(user_db_params)
-      expect(new_user.id).to eq('1')
-      expect(new_user.name).to eq('Name1')
-      expect(new_user.username).to eq('Username')
-      expect(new_user.email).to eq('email@email.com')
+      check_user(new_user)
     end
   end
 
@@ -32,10 +26,14 @@ describe User do
     it "can retrieve a user from the users table" do
       new_user = User.create(user_db_params)
       found_user = User.find(id: '1')
-      expect(found_user.id).to eq('1')
-      expect(found_user.name).to eq('Name1')
-      expect(found_user.username).to eq('Username')
-      expect(found_user.email).to eq('email@email.com')
+      check_user(found_user)
     end
+  end
+
+  def check_user(user)
+    expect(user.id).to eq('1')
+    expect(user.name).to eq('Name1')
+    expect(user.username).to eq('Username')
+    expect(user.email).to eq('email@email.com')
   end
 end
