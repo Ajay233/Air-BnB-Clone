@@ -1,6 +1,7 @@
 require 'pg'
 require 'bcrypt'
 require_relative '../database_connection'
+require 'pry'
 
 class User
 
@@ -12,6 +13,12 @@ class User
                               RETURNING id, name, username, email;").first
 
      build_user(result)
+  end
+
+  def self.find(id:)
+    return nil unless id
+    result = DatabaseConnection.query("SELECT * FROM users WHERE id = '#{id}';").first
+    build_user(result)
   end
 
   def self.build_user(result)

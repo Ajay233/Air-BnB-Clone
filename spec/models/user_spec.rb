@@ -27,4 +27,15 @@ describe User do
       expect(new_user.email).to eq('email@email.com')
     end
   end
+
+  describe "#find" do
+    it "can retrieve a user from the users table" do
+      new_user = User.create(user_db_params)
+      found_user = User.find(id: '1')
+      expect(found_user.id).to eq('1')
+      expect(found_user.name).to eq('Name1')
+      expect(found_user.username).to eq('Username')
+      expect(found_user.email).to eq('email@email.com')
+    end
+  end
 end
