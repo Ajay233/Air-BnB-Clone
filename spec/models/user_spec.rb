@@ -24,9 +24,33 @@ describe User do
 
   describe "#find" do
     it "can retrieve a user from the users table" do
-      new_user = User.create(user_db_params)
+      User.create(user_db_params)
       found_user = User.find(id: '1')
       check_user(found_user)
+    end
+  end
+
+  describe "#authenticate" do
+    it "will return a valid user when the email and password is valid" do
+      User.create(user_db_params)
+      authenticated_user = User.authenticate(email: user_db_params[:email],
+                                             password: user_db_params[:password])
+
+      check_user(authenticated_user)
+    end
+
+    it "will return nil when the email is invalid" do
+      User.create(user_db_params)
+      invalid = User.authenticate(email: 'wrong@email.com',
+                                  password: user_db_params[:password])
+      expect(invalid).to be(nil)
+    end
+
+    it "will return nil when the password is invalid" do
+      User.create(user_db_params)
+      invalid = User.authenticate(email: user_db_params[:email],
+                                  password: 'wrong_password')
+      expect(invalid).to be(nil)
     end
   end
 
