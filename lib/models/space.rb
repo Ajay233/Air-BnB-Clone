@@ -23,6 +23,14 @@ class Space
     )
   end
 
+  def self.all
+    result = DatabaseConnection.query('SELECT * FROM spaces;')
+
+    result.map do |space|
+      build_space(space)
+    end
+  end
+
   attr_accessor :id, :name, :description, :date_available, :booked, :owner_id
 
   def initialize(id:, name:, description:, date_available:, booked:, owner_id:)

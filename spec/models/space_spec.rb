@@ -41,4 +41,27 @@ describe Space do
       check_space(space)
     end
   end
+
+  describe 'all' do
+    it 'displays all the spaces' do
+      space = Space.create(space_db_params)
+      space2_db_params = {
+        name: 'house1',
+        description: '2-bedroom house',
+        date_available: '2018-12-20', booked: 'f',
+        owner_id: '1'
+      }
+      Space.create(space2_db_params)
+      spaces = Space.all
+
+      expect(spaces.length).to eq 2
+      expect(spaces.first).to be_an_instance_of Space
+      expect(spaces.first.id).to eq space.id
+      expect(spaces.first.name).to eq space.name
+      expect(spaces.first.description).to eq space.description
+      expect(spaces.first.date_available).to eq space.date_available
+      expect(spaces.first.booked).to eq space.booked
+      expect(spaces.first.owner_id).to eq space.owner_id
+    end
+  end
 end
