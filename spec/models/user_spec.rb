@@ -1,13 +1,13 @@
 require_relative '../../lib/models/user'
 
 describe User do
-  let(:user_db_params) {
+  let(:user_db_params) do
     { name: 'Name1', username: 'Username',
       email: 'email@email.com', password: 'password' }
-  }
-  let(:user_obj_params) {
+  end
+  let(:user_obj_params) do
     { id: '1', name: 'Name1', username: 'Username', email: 'email@email.com' }
-  }
+  end
   let(:user) { User.new(user_obj_params) }
 
   it 'is an instance of User' do
