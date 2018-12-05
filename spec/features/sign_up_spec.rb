@@ -14,7 +14,7 @@ feature 'Sign up' do
   end
 
   scenario 'a user can sign up' do
-    visit_and_sign_up
+    sign_up
 
     expect(page).to have_content 'Welcome, testusername'
   end
