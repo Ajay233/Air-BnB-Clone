@@ -1,10 +1,13 @@
-<h1>
-  <% if @user == nil %>
-    Welcome
-  <% else %>
-    Welcome<%=", #{@user.username}" %>
-  <% end %>
-</h1>
+<div class="jumbotron">
+  <h1 class="display-4">Welcome to MakersBnB</h1>
+  <h2>
+    <% if @user == nil %>
+      Welcome
+    <% else %>
+      Welcome<%=", #{@user.username}" %>
+    <% end %>
+  </h2>
+</div>
 
 <form action="/spaces/new" method="get">
   <input type="submit" value="Add space" />
@@ -19,3 +22,4 @@
     Date available: <%=space.date_available%><br><br>
   <% end %>
 <% end %>
+
