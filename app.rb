@@ -3,6 +3,7 @@ require './database_connection_setup'
 require 'sinatra/flash'
 require './lib/models/user'
 
+# Airbnb class that inherits from Sinatra::Base
 class Airbnb < Sinatra::Base
   enable :sessions
   set :layout, true
@@ -46,5 +47,5 @@ class Airbnb < Sinatra::Base
     end
   end
 
-  run! if app_file == $0
+  run! if app_file == $PROGRAM_NAME
 end

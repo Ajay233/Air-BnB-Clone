@@ -7,16 +7,17 @@ require 'rspec'
 require 'simplecov'
 require 'simplecov-console'
 require 'database_helpers'
+require 'web_helpers'
 
 Capybara.app = Airbnb
 
-SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
-  SimpleCov::Formatter::Console])
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
+  [SimpleCov::Formatter::Console]
+)
 
 SimpleCov.start do
-  add_filter("./*.rb")
+  add_filter('./*.rb')
 end
-
 
 RSpec.configure do |config|
   config.before(:each) do
