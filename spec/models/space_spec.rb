@@ -64,4 +64,27 @@ describe Space do
       expect(spaces.first.owner_id).to eq space.owner_id
     end
   end
+
+  describe 'users_spaces' do
+    it 'can list a particular users spaces' do
+     new_user =  User.create({ name: 'Name2', username: 'blank user',
+                               email: 'blank_email@email.com', password: 'qwe2' })
+
+    5.times do |i|
+      Space.create( { name: "Flat#{i}",
+                      description: "#{i}-bedroom flat",
+                      date_available: "2019-01-01", booked: 'f',
+                      owner_id: '1' } )
+      Space.create( { name: "Flat#{i + 7}",
+                      description: "#{i}-bedroom flat",
+                      date_available: "2019-01-01", booked: 'f',
+                      owner_id: '2' } )
+    end
+
+    spaces = Space.users_spaces(user: new_user.id)
+
+    spaces.each { |space| expect(space.owner_id).to eq('1') }
+    expect(spaces.size).to eq(5)
+    end
+  end
 end
