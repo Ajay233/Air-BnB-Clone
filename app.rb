@@ -2,6 +2,7 @@ require 'sinatra/base'
 require './database_connection_setup'
 require 'sinatra/flash'
 require './lib/models/user'
+require './lib/models/space'
 
 # Airbnb class that inherits from Sinatra::Base
 class Airbnb < Sinatra::Base
@@ -11,6 +12,7 @@ class Airbnb < Sinatra::Base
 
   get '/' do
     @user = User.find(id: session[:user_id])
+    @spaces = Space.all
     erb :index
   end
 
@@ -52,6 +54,26 @@ class Airbnb < Sinatra::Base
       flash[:notice] = 'That user already exists, please try again'
       redirect :"users/new"
     end
+  end
+
+  get '/spaces/new' do
+    user = User.find(id: session[:user_id])
+    if user.nil?
+      flash[:notice] = 'You have to sign in to add a space'
+      redirect :'/sessions/new'
+    end
+    erb(:"spaces/new")
+  end
+
+  post '/spaces' do
+    Space.create(
+      name: params['name'],
+      description: params['description'],
+      date_available: params['date_available'],
+      booked: 'f',
+      owner_id: session[:user_id]
+    )
+    redirect '/'
   end
 
   run! if app_file == $PROGRAM_NAME

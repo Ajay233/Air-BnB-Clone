@@ -5,3 +5,17 @@
     Welcome<%=", #{@user.username}" %>
   <% end %>
 </h1>
+
+<form action="/spaces/new" method="get">
+  <input type="submit" value="Add space" />
+</form>
+
+<h2>Available spaces:</h2>
+<ul>
+<% @spaces.each do |space| %>
+  <% if space.booked != 't' %>
+    Name: <%=space.name%><br>
+    Description: <%=space.description%><br>
+    Date available: <%=space.date_available%><br><br>
+  <% end %>
+<% end %>
