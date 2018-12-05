@@ -55,4 +55,10 @@ class User
     @username = username
     @email = email
   end
+
+  def spaces
+    results = DatabaseConnection.query('SELECT * FROM spaces ' \
+                                       "WHERE owner_id = #{id};")
+    results.map { |result| Space.build_space(result) }
+  end
 end
