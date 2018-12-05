@@ -21,12 +21,12 @@ feature 'Sign up' do
 
   scenario 'will get an error message if username exists' do
     sign_up
-    click_link "Sign up"
+    click_link 'Sign up'
     fill_in('name', with: 'testname')
     fill_in('username', with: 'Ajay123')
     fill_in('email', with: 'test@example.com')
     fill_in('password', with: 'password123')
     click_button('Submit')
-    expect(page).to have_content "That user already exists, please try again"
+    expect(page).to have_content 'That user already exists, please try again'
   end
 end

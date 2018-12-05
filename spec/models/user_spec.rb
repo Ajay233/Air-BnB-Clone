@@ -5,9 +5,11 @@ describe User do
     { name: 'Name1', username: 'Username',
       email: 'email@email.com', password: 'password' }
   end
+
   let(:user_obj_params) do
     { id: '1', name: 'Name1', username: 'Username', email: 'email@email.com' }
   end
+
   let(:user) { User.new(user_obj_params) }
 
   it 'is an instance of User' do

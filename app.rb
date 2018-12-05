@@ -15,18 +15,25 @@ class Airbnb < Sinatra::Base
   end
 
   get '/sessions/new' do
-   erb :"sessions/new"
+    erb :"sessions/new"
+  end
+
+  get '/sessions/destroy' do
+    session.clear
+    flash[:notice] = 'You have signed out'
+    redirect '/'
   end
 
   post '/sessions' do
-     user = User.authenticate(email: params[:email], password: params[:password])
-     unless user.nil?
-       session[:user_id] = user.id
-       redirect '/'
-     else
-       flash[:notice] = "E-mail or Password was incorrect, or you haven't signed up"
-       redirect :"sessions/new"
-     end
+    user = User.authenticate(email: params[:email], password: params[:password])
+    if user.nil?
+      flash[:notice] = 'E-mail or Password was incorrect, ' \
+                       'or you haven\'t signed up'
+      redirect :"sessions/new"
+    else
+      session[:user_id] = user.id
+      redirect '/'
+    end
   end
 
   get '/users/new' do
@@ -42,7 +49,7 @@ class Airbnb < Sinatra::Base
       session[:user_id] = user.id
       redirect '/'
     rescue PG::UniqueViolation
-      flash[:notice] = "That user already exists, please try again"
+      flash[:notice] = 'That user already exists, please try again'
       redirect :"users/new"
     end
   end
