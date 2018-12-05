@@ -7,7 +7,7 @@ require 'rspec'
 require 'simplecov'
 require 'simplecov-console'
 require 'database_helpers'
-require 'web_helpers'
+require 'model_helpers'
 
 Capybara.app = Airbnb
 
