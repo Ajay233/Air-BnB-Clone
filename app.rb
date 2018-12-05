@@ -24,9 +24,8 @@ class Airbnb < Sinatra::Base
        redirect '/'
      else
        flash[:notice] = "E-mail or Password was incorrect, or you haven't signed up"
-       redirect "/sessions/new"
+       redirect :"sessions/new"
      end
-     p user
   end
 
   get '/users/new' do

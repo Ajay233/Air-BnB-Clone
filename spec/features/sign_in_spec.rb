@@ -15,14 +15,13 @@ feature 'Sign in' do
    expect(page).to have_content "Welcome, testusername"
  end
 
- def sign_up
-   visit "/"
-   click_link "Sign up"
-   fill_in('name', with: 'somename')
-   fill_in('username', with: 'testusername')
+ scenario 'can not sign in if not signed up or using wrong credentials' do
+   visit '/'
+   click_link "Sign in"
    fill_in('email', with: 'test@example.com')
    fill_in('password', with: 'password123')
    click_button('Submit')
+   expect(page).to have_content "E-mail or Password was incorrect, or you haven't signed up"
  end
 
 end
