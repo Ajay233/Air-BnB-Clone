@@ -1,28 +1,44 @@
 require_relative '../../lib/models/space'
+require_relative '../../lib/models/user'
 
 describe Space do
-
-  let(:user_obj_params) { {id: "1", name: "Name1", username: "Username", \
-                        email: "email@email.com"} }
-  let(:user) { User.new(user_obj_params) }
-  let(:space_obj_params) { {id: "1", name: "Flat1",\
-                          description: "1-bedroom flat", \
-                          date_available: "2019/01/01", booked: "false", \
-                          owner_id: "1"} }
+  let(:user_db_params) do
+    { name: 'Name1', username: 'Username',
+      email: 'email@email.com', password: 'qwe' }
+  end
+  let(:space_obj_params) do
+    { id: '1', name: 'Flat1',
+      description: '1-bedroom flat',
+      date_available: '2019-01-01', booked: 'f',
+      owner_id: '1' }
+  end
+  let(:space_db_params) do
+    { name: 'Flat1',
+      description: '1-bedroom flat',
+      date_available: '2019-01-01', booked: 'f',
+      owner_id: '1' }
+  end
   let(:space) { Space.new(space_obj_params) }
 
-  it "is an instance of Space" do
+  before(:each) do
+    User.create(user_db_params)
+  end
+
+  it 'is an instance of Space' do
     expect(space).to be_an_instance_of Space
   end
 
-  describe "initialize" do
-    it "has id, name, description, date_available, booked, owner_id" do
-      expect(space.id).to eq('1')
-      expect(space.name).to eq('Flat1')
-      expect(space.description).to eq('1-bedroom flat')
-      expect(space.date_available).to eq("2019/01/01")
-      expect(space.booked).to eq("false")
-      expect(space.owner_id).to eq("1")
+  describe 'initialize' do
+    it 'has id, name, description, date_available, booked, owner_id' do
+      check_space(space)
+    end
+  end
+
+  describe 'create' do
+    it 'adds a space' do
+      space = Space.create(space_db_params)
+
+      check_space(space)
     end
   end
 end
