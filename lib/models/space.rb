@@ -1,4 +1,28 @@
+# Spaces class
 class Space
+  def self.create(name:, description:, date_available:,
+                  booked:, owner_id:)
+    result = DatabaseConnection.query(
+      "INSERT INTO spaces (name, description, date_available, \
+      booked, owner_id)
+       VALUES('#{name}', '#{description}', '#{date_available}', '#{booked}',
+         '#{owner_id}')
+       RETURNING id, name, description, date_available, booked, owner_id;"
+    ).first
+    build_space(result)
+  end
+
+  def self.build_space(result)
+    Space.new(
+      id: result['id'],
+      name: result['name'],
+      description: result['description'],
+      date_available: result['date_available'],
+      booked: result['booked'],
+      owner_id: result['owner_id']
+    )
+  end
+
   attr_accessor :id, :name, :description, :date_available, :booked, :owner_id
 
   def initialize(id:, name:, description:, date_available:, booked:, owner_id:)

@@ -53,11 +53,4 @@ describe User do
       expect(invalid).to be(nil)
     end
   end
-
-  def check_user(user)
-    expect(user.id).to eq('1')
-    expect(user.name).to eq('Name1')
-    expect(user.username).to eq('Username')
-    expect(user.email).to eq('email@email.com')
-  end
 end
