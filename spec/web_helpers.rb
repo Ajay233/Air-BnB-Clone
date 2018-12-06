@@ -7,3 +7,10 @@ def sign_up
   fill_in('password', with: 'password123')
   click_button('Submit')
 end
+
+def sign_in
+  click_link 'Sign in'
+  fill_in('email', with: 'test@example.com')
+  fill_in('password', with: 'password123')
+  click_button('Submit')
+end
