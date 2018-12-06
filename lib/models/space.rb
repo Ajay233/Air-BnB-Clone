@@ -31,6 +31,13 @@ class Space
     end
   end
 
+  def self.find(id:)
+    return nil unless id
+
+    result = DatabaseConnection.query("SELECT * FROM spaces WHERE \
+      id = '#{id}';").first
+  end
+
   attr_accessor :id, :name, :description, :date_available, :booked, :owner_id
 
   def initialize(id:, name:, description:, date_available:, booked:, owner_id:)

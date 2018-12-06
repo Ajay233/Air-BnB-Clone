@@ -13,3 +13,10 @@ def check_space(space)
   expect(space.booked).to eq('f')
   expect(space.owner_id).to eq('1')
 end
+
+def check_request(request)
+  expect(request.id).to eq 1
+  expect(request.space_id).to eq 1
+  expect(request.approval_status).to eq 'Pending'
+  expect(request.requester_id).to eq 2
+end
