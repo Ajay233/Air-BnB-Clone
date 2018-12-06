@@ -10,13 +10,13 @@ describe Space do
     { id: '1', name: 'Flat1',
       description: '1-bedroom flat',
       date_available: '2019-01-01', booked: 'f',
-      owner_id: '1' }
+      owner_id: '1', price: '100' }
   end
   let(:space_db_params) do
     { name: 'Flat1',
       description: '1-bedroom flat',
       date_available: '2019-01-01', booked: 'f',
-      owner_id: '1' }
+      owner_id: '1', price: '100' }
   end
   let(:space) { Space.new(space_obj_params) }
 
@@ -49,7 +49,8 @@ describe Space do
         name: 'house1',
         description: '2-bedroom house',
         date_available: '2018-12-20', booked: 'f',
-        owner_id: '1'
+        owner_id: '1',
+        price: '120',
       }
       Space.create(space2_db_params)
       spaces = Space.all
@@ -62,6 +63,7 @@ describe Space do
       expect(spaces.first.date_available).to eq space.date_available
       expect(spaces.first.booked).to eq space.booked
       expect(spaces.first.owner_id).to eq space.owner_id
+      expect(spaces.first.price).to eq space.price
     end
   end
 end

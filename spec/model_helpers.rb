@@ -12,4 +12,5 @@ def check_space(space)
   expect(space.date_available).to eq('2019-01-01')
   expect(space.booked).to eq('f')
   expect(space.owner_id).to eq('1')
+  expect(space.price).to eq('100')
 end

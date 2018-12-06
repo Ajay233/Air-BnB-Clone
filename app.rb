@@ -71,7 +71,8 @@ class Airbnb < Sinatra::Base
       description: params['description'],
       date_available: params['date_available'],
       booked: 'f',
-      owner_id: session[:user_id]
+      owner_id: session[:user_id],
+      price: params['price'],
     )
     redirect '/'
   end

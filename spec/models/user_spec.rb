@@ -72,11 +72,11 @@ describe User do
         Space.create(name: "Flat#{i}",
                      description: "#{i}-bedroom flat",
                      date_available: '2019-01-01', booked: 'f',
-                     owner_id: '1')
+                     owner_id: '1', price: '100')
         Space.create(name: "Flat#{i + 7}",
                      description: "#{i}-bedroom flat",
                      date_available: '2019-01-01', booked: 'f',
-                     owner_id: '2')
+                     owner_id: '2', price: '120')
       end
 
       spaces = user_one.spaces
