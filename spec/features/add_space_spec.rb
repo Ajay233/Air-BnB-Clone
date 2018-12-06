@@ -22,6 +22,7 @@ feature 'Add a space' do
     fill_in('name', with: 'Flat1')
     fill_in('description', with: 'Small flat')
     fill_in('date_available', with: '2018-12-20')
+    fill_in('price', with: '100')
     click_button('Submit')
 
     expect(page).to have_content('Flat1')
