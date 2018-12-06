@@ -15,6 +15,14 @@
 </form>
 <br/>
 
+
+  <form action="/spaces/search" method="post">
+    <input type="date" name="date_from" value="">
+    <input type="date" name="date_to" value="">
+    <input class="submit" type="submit" value="Search" />
+  </form>
+
+
 <ul>
 <% @spaces.each do |space| %>
   <% if space.booked != 't' %>
@@ -23,3 +31,4 @@
     Date available: <%=space.date_available%><br><br>
   <% end %>
 <% end %>
+</ul>
