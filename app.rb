@@ -12,7 +12,12 @@ class Airbnb < Sinatra::Base
 
   get '/' do
     @user = User.find(id: session[:user_id])
-    @spaces = Space.all
+    @spaces = if session[:date_from]
+                Space.available(date_from: session[:date_from],
+                                date_to: session[:date_to])
+              else
+                Space.all
+              end
     erb :index
   end
 
@@ -73,6 +78,12 @@ class Airbnb < Sinatra::Base
       booked: 'f',
       owner_id: session[:user_id]
     )
+    redirect '/'
+  end
+
+  post '/spaces/search' do
+    session[:date_from] = params[:date_from]
+    session[:date_to] = params[:date_to]
     redirect '/'
   end
 

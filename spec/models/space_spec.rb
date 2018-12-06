@@ -64,4 +64,26 @@ describe Space do
       expect(spaces.first.owner_id).to eq space.owner_id
     end
   end
+
+  describe '.available' do
+    it 'can list spaces which are available between two dates' do
+      10.times do |num|
+        space_db_params_multidate = {
+          name: "house#{num}",
+          description: '2-bedroom house',
+          date_available: "2018-#{num + 1}-20", booked: 'f',
+          owner_id: '1'
+        }
+        Space.create(space_db_params_multidate)
+      end
+
+      spaces = Space.available(date_from: '2018-02-01', date_to: '2018-07-25')
+
+      expect(spaces.length).to eq 6
+      expect(spaces.first).to be_an_instance_of Space
+      expect(spaces.last).to be_an_instance_of Space
+      expect(spaces.first.date_available).to eq('2018-02-20')
+      expect(spaces.last.date_available).to eq('2018-07-20')
+    end
+  end
 end
