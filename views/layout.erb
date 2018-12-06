@@ -90,6 +90,12 @@
     .jumbotron {
       background-color: rgb(217, 221, 226, 0.4);
     }
+    #flash-notice {
+      color: rgb(163, 27, 27);
+      margin-bottom: 0;
+      opacity: 0.7;
+    }
+
   </style>
   <body id="body">
     <div>
@@ -100,7 +106,7 @@
         <li id="sign-out" class=""><a href="/sessions/destroy"><i class="fas fa-sign-out-alt"></i> Sign out</a></li>
       </ul>
         <% if flash[:notice] %>
-          <div class="alert alert-danger" role="alert">
+          <div id="flash-notice" class="alert alert-danger" role="alert">
         <%= flash[:notice] %>
           </div>
         <% end %>
