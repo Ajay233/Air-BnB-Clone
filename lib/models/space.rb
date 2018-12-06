@@ -32,8 +32,9 @@ class Space
   end
 
   def self.available(date_from:, date_to:)
-    result =DatabaseConnection.query("SELECT * FROM spaces WHERE date_available " \
-                                     "BETWEEN '#{date_from}' AND '#{date_to}';")
+    result = DatabaseConnection.query("SELECT * FROM spaces WHERE \
+                                      date_available BETWEEN \
+                                      '#{date_from}' AND '#{date_to}';")
 
     result.map do |space|
       build_space(space)

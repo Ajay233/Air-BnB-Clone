@@ -12,12 +12,12 @@ class Airbnb < Sinatra::Base
 
   get '/' do
     @user = User.find(id: session[:user_id])
-    if session[:date_from]
-      @spaces = Space.available(date_from: session[:date_from],
+    @spaces = if session[:date_from]
+                Space.available(date_from: session[:date_from],
                                 date_to: session[:date_to])
-    else
-      @spaces = Space.all
-    end
+              else
+                Space.all
+              end
     erb :index
   end
 
