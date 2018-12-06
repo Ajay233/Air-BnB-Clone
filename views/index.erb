@@ -9,11 +9,12 @@
   </h2>
 </div>
 
-<form action="/spaces/new" method="get">
-  <input type="submit" value="Add space" />
-</form>
-
 <h2>Available spaces:</h2>
+<form action="/spaces/new" method="get">
+  <input class="submit" type="submit" value="Add space" />
+</form>
+<br/>
+
 <ul>
 <% @spaces.each do |space| %>
   <% if space.booked != 't' %>
