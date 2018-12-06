@@ -1,16 +1,20 @@
-<h1>
-  <% if @user == nil %>
-    Welcome
-  <% else %>
-    Welcome<%=", #{@user.username}" %>
-  <% end %>
-</h1>
-
-<form action="/spaces/new" method="get">
-  <input type="submit" value="Add space" />
-</form>
+<div class="jumbotron">
+  <h1 class="display-4">Welcome to MakersBnB</h1>
+  <h2>
+    <% if @user == nil %>
+      Welcome
+    <% else %>
+      Welcome<%=", #{@user.username}" %>
+    <% end %>
+  </h2>
+</div>
 
 <h2>Available spaces:</h2>
+<form action="/spaces/new" method="get">
+  <input class="submit" type="submit" value="Add space" />
+</form>
+<br/>
+
 <ul>
 <% @spaces.each do |space| %>
   <% if space.booked != 't' %>
