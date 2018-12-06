@@ -64,6 +64,7 @@ describe Space do
       expect(spaces.first.booked).to eq space.booked
       expect(spaces.first.owner_id).to eq space.owner_id
       expect(spaces.first.price).to eq space.price
+<<<<<<< HEAD
     end
   end
 
@@ -86,6 +87,8 @@ describe Space do
       expect(spaces.last).to be_an_instance_of Space
       expect(spaces.first.date_available).to eq('2018-02-20')
       expect(spaces.last.date_available).to eq('2018-07-20')
+=======
+>>>>>>> 3f3c48f6a0b61c867b4b06b53d0911d3363a9f4b
     end
   end
 end
