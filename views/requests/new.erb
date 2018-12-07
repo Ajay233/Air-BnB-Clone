@@ -1,0 +1,11 @@
+<h2>Are you sure you wish to request this space?</h2>
+<form class="" action="requests/confirm" method="get">
+  <h3>
+  Name: <%= @space.name %><br>
+  Description: <%= @space.description %><br>
+  Date available: <%= @space.date_available %><br>
+  Owner: <%= @owner.username %><br>
+  </h3>
+  <br>
+  <input class="submit" type="submit" name="" value="Confirm Request">
+</form>

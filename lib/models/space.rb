@@ -36,6 +36,7 @@ class Space
 
     result = DatabaseConnection.query("SELECT * FROM spaces WHERE \
       id = '#{id}';").first
+    self.build_space(result)
   end
 
   attr_accessor :id, :name, :description, :date_available, :booked, :owner_id

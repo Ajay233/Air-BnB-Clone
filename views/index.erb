@@ -18,8 +18,11 @@
 <ul>
 <% @spaces.each do |space| %>
   <% if space.booked != 't' %>
+    <form action="/<%= space.id %>/requests/new" method="post">
     Name: <%=space.name%><br>
     Description: <%=space.description%><br>
     Date available: <%=space.date_available%><br><br>
+      <input class="submit" type="submit" name="Request this space" value="Request this space" />
+    </form>
   <% end %>
 <% end %>

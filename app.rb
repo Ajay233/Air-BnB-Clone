@@ -76,5 +76,17 @@ class Airbnb < Sinatra::Base
     redirect '/'
   end
 
+  post '/:id/requests/new' do
+    session[:space_id] = params[:id]
+    @requester = User.find(id: session[:user_id])
+    if @requester.nil?
+      flash[:notice] = 'You have to sign in to request a space'
+      redirect :'/sessions/new'
+    end
+    @space = Space.find(id: session[:space_id])
+    @owner = User.find(id: @space.owner_id)
+    erb(:"requests/new")
+  end
+
   run! if app_file == $PROGRAM_NAME
 end

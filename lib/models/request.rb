@@ -5,8 +5,7 @@ class Request
 
   def self.create(space_id:, requester_id:)
 
-    space_data = Space.find(id: space_id)
-    space = Space.build_space(space_data)
+    space = Space.find(id: space_id)
     result = DatabaseConnection.query(
       "INSERT INTO requests (space_id, approval_status, requester_id)
       VALUES('#{space_id}', 'Pending', '#{requester_id}')
