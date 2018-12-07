@@ -1,9 +1,14 @@
 <h1>Add a new space</h1>
+<div class="container">
+  <form action="/spaces" method="post">
+    <label for="">Name:</label><br>
+    <input align="left" id="text" type="name" name="name" />
+    <label for="">Description:</label><br>
+    <input align="left" id="text" type="description" name="description" />
+    <label for="">Date available:</label><br>
+    <input align="left" id="text" type="date" name="date_available" />
+    <br>
+    <input class="submit" type="submit" value="Submit" />
+  </form>
 
-<form action="/spaces" method="post">
-  Name: <input type="name" name="name" />
-  Description: <input type="description" name="description" />
-  Date available: <input type="date" name="date_available" />
-  <br>
-  <input type="submit" value="Submit" />
-</form>
+</div>

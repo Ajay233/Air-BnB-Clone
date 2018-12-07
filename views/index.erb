@@ -1,8 +1,9 @@
 <div class="jumbotron">
   <h1 class="display-4">Welcome to MakersBnB</h1>
+  <hr>
   <h2>
     <% if @user == nil %>
-      Welcome
+      
     <% else %>
       Welcome<%=", #{@user.username}" %>
     <% end %>
@@ -10,25 +11,38 @@
 </div>
 
 <h2>Available spaces:</h2>
-<form action="/spaces/new" method="get">
+
+
+
+<ul id= "page-actions">
+
+
+<form id="add" action="/spaces/new" method="get">
   <input class="submit" type="submit" value="Add space" />
 </form>
-<br/>
 
 
-  <form action="/spaces/search" method="post">
-    <input type="date" name="date_from" value="">
-    <input type="date" name="date_to" value="">
+  <form id="search" action="/spaces/search" method="post">
+    <input id="text2" type="date" name="date_from" value="">
+    <input id="text2" type="date" name="date_to" value="">
     <input class="submit" type="submit" value="Search" />
   </form>
 
-
-<ul>
-<% @spaces.each do |space| %>
-  <% if space.booked != 't' %>
-    Name: <%=space.name%><br>
-    Description: <%=space.description%><br>
-    Date available: <%=space.date_available%><br><br>
-  <% end %>
-<% end %>
 </ul>
+
+  <% @spaces.each do |space| %>
+    <% if space.booked != 't' %>
+    <div class="column">
+      <div class="card">
+      <div class="title">
+      Name: <%=space.name%>
+      </div>
+      <div class="main">
+        Description: <%=space.description%><br>
+        Date available: <%=space.date_available%><br><br>
+        <button class="booking-button" type="button" name="Book Now">Book Now</button>
+      </div>
+      </div>
+    </div>
+    <% end %>
+  <% end %>

@@ -14,7 +14,7 @@
       font-family: helvetica;
       color: white;
       margin: 0 0;
-      background-image: url("/background.jpg");
+      background-image: url("/background2.jpg");
       background-image: center;
       background-size: cover;
     }
@@ -55,6 +55,13 @@
       border-radius: 4px;
       background-color: #226de8;
     }
+    .booking-button{
+      border-radius: 4px;
+      background-color: rgb(198, 41, 41);
+      color: white;
+      font-size: 16px;
+      padding: 14px 40px;
+    }
     .submit {
       border-radius: 4px;
       background-color: #226de8;
@@ -71,6 +78,18 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+    }
+
+    #text2 {
+    width: 40%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    margin-bottom: 30px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+
     }
     .carousel slide{
       interval: true;
@@ -96,6 +115,53 @@
       opacity: 0.7;
     }
 
+    .title {
+      background-color: rgb(217, 221, 226);
+      padding: 10px;
+      color: black;
+    }
+    .main {
+      background-color: white;
+      padding: 10px;
+      color: black;
+      background-image: linear-gradient(white, gray);
+    }
+    .space {
+      border-radius: 25px;
+    }
+
+    /* Create three equal columns that floats next to each other */
+    .column {
+        float: left;
+        width: 33.33%;
+        padding: 10px;
+        height: 300px; /* Should be removed. Only for demonstration */
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    .card {
+      color: black;
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.6);
+    }
+
+    #add {
+      float:left;
+      margin-left: 10px;
+    }
+
+    #search{
+      float: right;
+      width: 40%;
+    }
+
+    #page-actions{
+      background-color: rgb(217, 221, 226, 0);
+    }
   </style>
   <body id="body">
     <div>
@@ -110,6 +176,7 @@
         <%= flash[:notice] %>
           </div>
         <% end %>
+         <% flash.clear %>
       <%= yield %>
     </div>
   </body>
