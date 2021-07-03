@@ -9,18 +9,28 @@
     <% end %>
   </h2>
 </div>
-
-<h2>Available spaces:</h2>
+<div class="container">
 <form action="/spaces/new" method="get">
   <input class="submit" type="submit" value="Add space" />
 </form>
 <br/>
 
-<ul>
+<<<<<<< HEAD
+  <form action="/spaces/search" method="post">
+    <input type="date" name="date_from" value="">
+    <input type="date" name="date_to" value="">
+    <input class="submit" type="submit" value="Search" />
+  </form>
+
+=======
+>>>>>>> 3f3c48f6a0b61c867b4b06b53d0911d3363a9f4b
+<h2>Available spaces:</h2>
 <% @spaces.each do |space| %>
   <% if space.booked != 't' %>
     Name: <%=space.name%><br>
     Description: <%=space.description%><br>
-    Date available: <%=space.date_available%><br><br>
+    Date available: <%=space.date_available%><br>
+    Price per night: £<%=space.price%><br><br>
   <% end %>
 <% end %>
+</div>

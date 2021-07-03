@@ -1,13 +1,14 @@
 # Spaces class
 class Space
   def self.create(name:, description:, date_available:,
-                  booked:, owner_id:)
+                  booked:, owner_id:, price:)
     result = DatabaseConnection.query(
       "INSERT INTO spaces (name, description, date_available, \
-      booked, owner_id)
-       VALUES('#{name}', '#{description}', '#{date_available}', '#{booked}',
-         '#{owner_id}')
-       RETURNING id, name, description, date_available, booked, owner_id;"
+        booked, owner_id, price) \
+       VALUES('#{name}', '#{description}', '#{date_available}', '#{booked}', \
+        '#{owner_id}', '#{price}') \
+       RETURNING id, name, description, date_available, booked, \
+        owner_id, price;"
     ).first
     build_space(result)
   end
@@ -19,7 +20,8 @@ class Space
       description: result['description'],
       date_available: result['date_available'],
       booked: result['booked'],
-      owner_id: result['owner_id']
+      owner_id: result['owner_id'],
+      price: result['price']
     )
   end
 
@@ -31,14 +33,29 @@ class Space
     end
   end
 
-  attr_accessor :id, :name, :description, :date_available, :booked, :owner_id
+  def self.available(date_from:, date_to:)
+    result = DatabaseConnection.query("SELECT * FROM spaces WHERE \
+                                      date_available BETWEEN \
+                                      '#{date_from}' AND '#{date_to}';")
 
-  def initialize(id:, name:, description:, date_available:, booked:, owner_id:)
+    result.map do |space|
+      build_space(space)
+    end
+  end
+
+  attr_accessor :id, :name, :description, :date_available,
+                :booked, :owner_id, :price
+
+  def initialize(
+    id:, name:, description:, date_available:,
+    booked:, owner_id:, price:
+  )
     @id = id
     @name = name
     @description = description
     @date_available = date_available
     @booked = booked
     @owner_id = owner_id
+    @price = price
   end
 end

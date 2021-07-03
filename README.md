@@ -125,3 +125,6 @@ I would like to still receive request until I have confirmed a booking on a give
 - User can log in
 - User can add a space
 - User can see listed spaces
+
+### Entity Relationship Diagram
+[ERD](https://github.com/Ajay233/Air-BnB-Clone/blob/master/diagrams/ERD.png)
